@@ -1,0 +1,23 @@
+$grey: #73777a;
+$lightBlue: #017afd;
+$darkBlue: #0059be;
+
+// Borders
+$radius: 5px;
+
+// background
+.bg-grey {
+  background-color: $grey;
+}
+.bg-blue-dark {
+  background-color: $darkBlue;
+}
+
+// position
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}

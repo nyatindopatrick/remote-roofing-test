@@ -1,0 +1,49 @@
+.flex-between {
+  @include flex(row, space-between, center);
+  color: white;
+  a {
+    padding: 10px;
+    width: 6rem;
+    img {
+      width: 100%;
+    }
+  }
+  p,
+  i {
+    color: white;
+  }
+  i {
+    margin-right: 10px;
+  }
+}
+
+.navbar {
+  @include flex(row, flex-start, center);
+  ul {
+    @include flex(row, flex-start, center);
+    list-style: none;
+    margin: 1.3rem 0px;
+    li {
+      margin-right: 1rem;
+      font-size: 16px;
+      a {
+        position: relative;
+        color: white;
+        padding: 7px 0px;
+        text-decoration: none;
+        font-family: 'Airbnb Cereal App Light', sans-serif;
+      }
+    }
+  }
+
+  .active {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid white;
+    }
+  }
+}

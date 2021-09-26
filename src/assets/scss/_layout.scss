@@ -1,0 +1,14 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Airbnb Cereal App Medium', sans-serif;
+}
+.main-container {
+  width: 1020px;
+  margin: 0px auto;
+  @media screen and (max-width: 1020px) {
+    margin: 0px 1rem;
+    width: auto;
+  }
+}
