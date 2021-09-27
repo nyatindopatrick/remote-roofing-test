@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { AutoComplete, Button } from 'antd';
-import axios from 'axios';
+import { Button } from 'antd';
+import SearchLocationInput from '../components/Autocomplete';
+
+const mapKey = process.env.REACT_APP_API_KEY;
 
 const services = [
   {
@@ -18,27 +20,8 @@ const services = [
 ];
 
 export default function Home() {
-  const [options, setOptions] = useState([]);
-
-  const onSearch = async searchText => {
-    const url = `https://webit-keyword-search.p.rapidapi.com/autosuggest?q=${searchText}&language=en`;
-    const { data } = await axios.get(url, {
-      headers: {
-        'x-rapidapi-host': 'webit-keyword-search.p.rapidapi.com',
-        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
-      },
-    });
-
-    setOptions(
-      !searchText
-        ? []
-        : data?.data?.results?.map(item => ({ value: item })) || []
-    );
-  };
-
-  const onSelect = data => {
-    console.log('onSelect', data);
-  };
+  const [query, setQuery] = useState('');
+  const [address, setAddress] = useState('');
 
   return (
     <div className='bg-grey home-header'>
@@ -47,16 +30,15 @@ export default function Home() {
         <p>
           Get your roof inspected remotely and connect with our trusted roofers
         </p>
+
         <div className='search-area'>
           <i className='fas fa-map-marker-alt'></i>
-          <AutoComplete
-            options={options}
-            style={{
-              width: 200,
-            }}
-            onSelect={onSelect}
-            onSearch={onSearch}
-            placeholder='Enter Your Address'
+          <SearchLocationInput
+            query={query}
+            setQuery={setQuery}
+            setAddress={setAddress}
+            mapKey={mapKey}
+            onChange={() => null}
           />
           <Button type='primary' shape='round'>
             Get Inspection
